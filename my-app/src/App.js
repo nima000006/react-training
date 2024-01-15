@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Table from "./component/Table";
 const App = () => {
     const [myArray, setMyArray] = useState([
         {
@@ -25,31 +25,23 @@ const App = () => {
       const updateArray = myArray.filter((item) => item.id !== id);
       setMyArray(updateArray)
   };
+  const [value, setValue] = useState(0)
+  const clickHandler = (type) => {
+    if(type === "increase") setValue(value + 1);
+    else {
+      if(value > 0) setValue(value - 1);
+       else alert("impossible!!")
+    }
+       
+  }
   return (
     <>
-      <table style={{ margin: "10px auto", width: "70%", textAlign: "center" }}>
-        <tr>
-          <th>id</th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Email</th>
-          <th>Delete button</th>
-        </tr>
-
-        {myArray.map((item) => {
-          return (
-            <tr>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.age}</td>
-              <td>{item.email}</td>
-              <td>
-                <button onClick={() => deleteHandler(item.id)}>delete</button>
-              </td>
-            </tr>
-          );
-        })}
-      </table>
+      <Table array={myArray} deleteHandler={deleteHandler} />
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+         <button onClick={() => clickHandler("increase")}>+</button>
+            <span>{value}</span>
+         <button onClick={() => clickHandler("decrease")}>-</button>
+      </div>
     </>
   );
 };
