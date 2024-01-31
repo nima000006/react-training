@@ -1,0 +1,29 @@
+.content-container{
+    width: 45%
+}
+.items-container{
+    display: flex;
+    justify-content: space-between;
+    background: gray;
+    padding: 10px;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 8px
+    
+}
+.items-container:first-child{
+    margin-top: 0
+}
+.picture-container{
+    height: 40px;
+    border: 1px solid #000;
+    width: 40px
+}
+.course-info{
+    display: flex;
+    flex-direction: column
+}
+.items-container button{
+    height: 40px;
+    margin: auto 0
+}
