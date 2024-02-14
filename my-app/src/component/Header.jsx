@@ -1,20 +1,15 @@
 import React from "react";
 import "./Header.css";
 
-const Header = ({ isLoggedIn, setLoggedIn }) => {
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
+const Header = ({ isLoggedIn, setLoggedIn, inputValue}) => {
 
   return (
     <div className="header">
       <p>dashboard</p>
       {isLoggedIn ? (
-        <p>You are logged in</p>
+        <p>{inputValue}</p>
       ) : (
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
+        <p>!First login please</p>
       )}
     </div>
   );

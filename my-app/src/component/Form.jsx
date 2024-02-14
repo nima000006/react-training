@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Form.css";
 
-const Form = ({ isLoggedIn, setLoggedIn }) => {
+const Form = ({ isLoggedIn, setLoggedIn, onInputChange }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,6 +10,9 @@ const Form = ({ isLoggedIn, setLoggedIn }) => {
     // Your login logic goes here
     setLoggedIn(!isLoggedIn);
 
+   // Pass the username value to the parent component
+    onInputChange(username);
+
     // Reset the form after submission
     setUsername("");
     setPassword("");
@@ -17,10 +20,7 @@ const Form = ({ isLoggedIn, setLoggedIn }) => {
 
   return (
     <div className="form-container">
-      {isLoggedIn ? (
-        <p>You are logged in</p>
-      ) : (
-        <>
+     
           <form onSubmit={handleLogin}>
             <input
               onChange={(e) => setUsername(e.target.value)}
@@ -36,9 +36,8 @@ const Form = ({ isLoggedIn, setLoggedIn }) => {
             />
             <button type="submit">login</button>
           </form>
-          <p>{`Username: ${username} - Password: ${password}`}</p>
-        </>
-      )}
+          
+      
     </div>
   );
 };

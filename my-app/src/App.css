@@ -7,3 +7,30 @@
 p{
     margin: 0
 }
+input{
+    height: 30px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+
+}
+button {
+    width: 30%;
+    height: 30px;
+    paddin: 10px;
+    border-radius: 8px;
+    background: gray;
+    border: 1px solid #000;
+    outline: none;
+    margin-top: 10px;
+    cursor: pointer
+}
+.items-container-new{
+    display: flex;
+    flex-direction: column;
+    background: gray;
+    padding: 10px
+}

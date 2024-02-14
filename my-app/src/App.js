@@ -5,56 +5,34 @@ import Content from "./component/Content";
 import Form from "./component/Form";
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-    // const [myArray, setMyArray] = useState([
-    //     {
-    //       name: "nima",
-    //       age: 26,
-    //       email: "nima@nima.com",
-    //       id: "1",
-    //     },
-    //     {
-    //       name: "jacob",
-    //       age: 16,
-    //       email: "jacob@jacob.com",
-    //       id: "2",
-    //     },
-    //     {
-    //       name: "lale",
-    //       age: 24,
-    //       email: "lale@lale.com",
-    //       id: "3",
-    //     },
-    //   ])
-  // const deleteHandler = (id) => {
-  //     const updateArray = myArray.filter((item) => item.id !== id);
-  //     setMyArray(updateArray)
-  // };
-  // const [value, setValue] = useState(0)
-  // const clickHandler = (type) => {
-  //   if(type === "increase") setValue(value + 1);
-  //   else {
-  //     if(value > 0) setValue(value - 1);
-  //      else alert("impossible!!")
-  //   }
-       
-  // }
-  const arrayCourses = [
-    {id: '1',name: "react", hours: 22, day:'Sundays', src:''},
-    {id: '2',name: "javascript", hours: 32, day:'Wednesdays', src:''},
-    {id: '3',name: "next", hours: 42, day:'Mondays', src:''}
-  ]
+  const [inputValue, setInputValue] = useState("");
+  const [arrayCourses, setArrayCourses] = useState([
+    { id: '1', name: "react", hours: 22, day: 'Sundays', src: '' },
+    { id: '2', name: "javascript", hours: 32, day: 'Wednesdays', src: '' },
+    { id: '3', name: "next", hours: 42, day: 'Mondays', src: '' }
+  ]);
+  const handleInputChange = (value) => {
+    setInputValue(value);
+  };
+  const handleDelete = (id) => {
+    // Filter out the item with the provided id
+    const updatedCourses = arrayCourses.filter(course => course.id !== id);
+    // Update the state with the filtered array
+    setArrayCourses(updatedCourses);
+  };
+  const handleAdd = (newCourse) => {
+    // Generate a unique id for the new course
+    const id = (Math.random() * 1000).toFixed(0).toString();
+    // Add the new course to the array
+    setArrayCourses([...arrayCourses, { ...newCourse, id }]);
+  };
   return (
     <>
-      {/* <Table array={myArray} deleteHandler={deleteHandler} />
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-         <button onClick={() => clickHandler("increase")}>+</button>
-            <span>{value}</span>
-         <button onClick={() => clickHandler("decrease")}>-</button>
-      </div> */}
-      <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>
+  
+      <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} inputValue={inputValue}/>
       <div className="container">
-          <Form isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}/>
-          <Content data={arrayCourses}/>
+          <Form isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} onInputChange={handleInputChange}/>
+          <Content data={arrayCourses} onDelete={handleDelete} onAdd={handleAdd}/>
       </div>
       
     </>
