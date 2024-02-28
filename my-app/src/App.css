@@ -7,6 +7,9 @@
 p{
     margin: 0
 }
+a, a:active, a:focus{
+    color: #fff
+}
 input{
     height: 30px;
     padding: 20px;
@@ -34,4 +37,36 @@ button {
     background: gray;
     padding: 10px;
     border-radius: 8px
+}
+.product-card.skeleton {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card.skeleton:hover {
+    transform: translateY(-5px);
+}
+
+.product-card.skeleton img {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    padding: 20px;
+}
+
+.skeleton {
+    background-color: #f4f4f4;
+}
+
+.skeleton h2 {
+    margin: 0;
+}
+
+.skeleton p {
+    margin: 10px 0;
 }

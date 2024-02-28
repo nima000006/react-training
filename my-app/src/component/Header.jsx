@@ -3,16 +3,22 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-const Header = ({ isLoggedIn, setLoggedIn, inputValue }) => {
+const Header = () => {
+  // Fetch the username from local storage
+  const username = localStorage.getItem("username");
+
+  // Check if the username exists
+  const isLoggedIn = username !== null;
+
   return (
     <div className="header">
       <p>dashboard</p>
       {isLoggedIn ? (
         <Link to={{
           pathname: "/profile",
-          state: { username: inputValue, password: localStorage.getItem("password") }
+          state: { username: username, password: localStorage.getItem("password") }
         }}>
-          {inputValue}
+          {username}
         </Link>
       ) : (
         <p>!First login please</p>

@@ -3,6 +3,9 @@ import Header from "./component/Header";
 import './App.css'
 import Content from "./component/Content";
 import Form from "./component/Form";
+import Login from './pages/Login';
+import Slidebar from './component/Slidebar';
+import Product from './component/Products';
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -29,11 +32,18 @@ const App = () => {
   return (
     <>
   
-      <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} inputValue={inputValue}/>
-      <div className="container">
-          <Form isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} onInputChange={handleInputChange}/>
-          <Content data={arrayCourses} onDelete={handleDelete} onAdd={handleAdd}/>
+      <Header  inputValue={inputValue}/>
+      <div style={{display: "flex"}}>
+      <Slidebar/>
+      <Product/>
       </div>
+    
+      {/* <div className="container"> */}
+          {/* <Form isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} onInputChange={handleInputChange}/>
+          <Content data={arrayCourses} onDelete={handleDelete} onAdd={handleAdd}/> */}
+
+         
+      {/* </div> */}
       
     </>
   );
